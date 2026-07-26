@@ -1,0 +1,36 @@
+{
+  "internalName": "Navegação principal — Estilos",
+  "slug": "estilos-de-cerveja",
+  "title": "Explore seu próximo estilo",
+  "showTitle": true,
+  "active": true,
+  "sectionBackground": "#f5f2e9",
+  "style": {
+    "backgroundColor": "#fffdf8",
+    "textColor": "#24251f",
+    "borderColor": "#e2ddd0",
+    "borderWidth": 1,
+    "borderRadius": 28,
+    "shadow": "soft",
+    "hoverEffect": "lift",
+    "hoverScale": 1.04
+  },
+  "responsive": {
+    "desktopItems": 6,
+    "mobileItems": 3,
+    "gap": 22,
+    "itemShape": "circle",
+    "desktopArrows": "hover",
+    "mobileScroll": true,
+    "mobileSnap": true
+  },
+  "items": [
+    { "id": "ipa", "name": "India Pale Ale", "image": { "source": "icon", "value": "Wheat", "alt": "India Pale Ale" }, "destination": { "type": "category", "value": "IPA", "label": "IPA", "openInNewTab": false }, "active": true, "order": 0 },
+    { "id": "pilsen", "name": "Pilsen", "image": { "source": "icon", "value": "Beer", "alt": "Pilsen" }, "destination": { "type": "category", "value": "Pilsen", "label": "Pilsen", "openInNewTab": false }, "active": true, "order": 1 },
+    { "id": "stout", "name": "Stout", "image": { "source": "icon", "value": "Coffee", "alt": "Stout" }, "destination": { "type": "category", "value": "Stout", "label": "Stout", "openInNewTab": false }, "active": true, "order": 2 },
+    { "id": "sour", "name": "Sour", "image": { "source": "icon", "value": "Cherry", "alt": "Sour" }, "destination": { "type": "category", "value": "Sour", "label": "Sour", "openInNewTab": false }, "active": true, "order": 3 },
+    { "id": "zero", "name": "Sem álcool", "image": { "source": "icon", "value": "Leaf", "alt": "Sem álcool" }, "destination": { "type": "category", "value": "Sem álcool", "label": "Sem álcool", "openInNewTab": false }, "active": true, "order": 4 },
+    { "id": "kits", "name": "Kits especiais", "image": { "source": "icon", "value": "Gift", "alt": "Kits especiais" }, "destination": { "type": "category", "value": "Kits e presentes", "label": "Kits e presentes", "openInNewTab": false }, "active": true, "order": 5 },
+    { "id": "top", "name": "Mais vendidos", "image": { "source": "icon", "value": "Flame", "alt": "Mais vendidos" }, "destination": { "type": "collection", "value": "Favoritas do mestre", "label": "Favoritas do mestre", "openInNewTab": false }, "active": true, "order": 6 }
+  ]
+}
