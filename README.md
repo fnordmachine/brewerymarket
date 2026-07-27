@@ -1,8 +1,11 @@
 # MarketBreja — Manager e vitrine
 
-> Base de conhecimento para Obsidian/RAG: [`docs/marketbreja-carrossel-conhecimento.md`](docs/marketbreja-carrossel-conhecimento.md)
+> Bases de conhecimento para Obsidian/RAG:
+>
+> - [`docs/marketbreja-carrossel-conhecimento.md`](docs/marketbreja-carrossel-conhecimento.md)
+> - [`docs/marketbreja-relatorio-pedidos-conhecimento.md`](docs/marketbreja-relatorio-pedidos-conhecimento.md)
 
-Implementação de referência do Manager e da vitrine em três aplicações independentes. O Manager contém o relatório de pedidos com filtros e exportação Excel:
+Implementação de referência do Manager e da vitrine em três aplicações independentes. Além do relatório de pedidos e do carrossel configurável, o projeto contém uma jornada completa de cross-sell de produtos:
 
 - `manager`: React + Vite, editor usado pelo lojista;
 - `ecommerce`: Next.js, vitrine pública e responsiva;
@@ -16,7 +19,7 @@ manager (localhost:5173) ── CRUD/upload ──▶ api (localhost:3333) ─�
 ecommerce (localhost:3000) ◀── endpoint público ┘
 ```
 
-O relatório permite consultar e detalhar pedidos, aplicar filtros combinados e exportar todos os campos obrigatórios. Na planilha, cada produto ocupa uma linha. A API também preserva os endpoints do carrossel configurável usado pela vitrine.
+O relatório permite consultar e detalhar pedidos, aplicar filtros combinados e exportar todos os campos obrigatórios. O cross-sell inclui CRUD/importação de regras, gatilhos por produto/categoria/coleção, preview, descontos em itens sugeridos ou na combinação e proteção da comissão de sellers 3P. Consulte a [documentação do cross-sell](docs/cross-sell.md).
 
 ## Executar localmente
 
@@ -70,6 +73,10 @@ O ecommerce consulta a API sem cache. O Manager identifica na tela quando está 
 - `GET /health` — informa a conectividade da API e do MongoDB.
 - `GET /orders` — lista todos os pedidos da loja;
 - `POST /orders/import` — cria ou atualiza os pedidos da carga inicial.
+- `GET|POST /cross-sell-rules` — lista ou cria regras de cross-sell;
+- `PATCH|DELETE /cross-sell-rules/:id` — edita ou exclui uma regra;
+- `POST /cross-sell-rules/import` — importa regras de forma idempotente pelo código;
+- `POST /public/cross-sell/preview` — resolve regras vigentes e calcula descontos.
 
 ## Produção
 

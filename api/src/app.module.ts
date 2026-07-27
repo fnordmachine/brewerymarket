@@ -5,6 +5,7 @@ import { NavigationCarouselsModule } from './navigation-carousels/navigation-car
 import { UploadsModule } from './uploads/uploads.module';
 import { HealthController } from './health.controller';
 import { OrdersModule } from './orders/orders.module';
+import { CrossSellModule } from './cross-sell/cross-sell.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { OrdersModule } from './orders/orders.module';
     }),
     NavigationCarouselsModule,
     OrdersModule,
+    CrossSellModule,
     UploadsModule,
   ],
   controllers: [HealthController],

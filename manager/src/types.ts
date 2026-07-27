@@ -126,3 +126,45 @@ export interface NavigationCarousel {
   };
   items: NavigationItem[];
 }
+
+export type CrossSellTargetType = 'product' | 'category' | 'collection';
+export type CrossSellDiscountType = 'percentage' | 'fixed' | 'none';
+export type CrossSellDiscountScope = 'suggested' | 'combination';
+
+export interface CrossSellTrigger {
+  type: CrossSellTargetType;
+  referenceId: string;
+  label: string;
+}
+
+export interface CrossSellRule {
+  _id?: string;
+  code: string;
+  internalName: string;
+  active: boolean;
+  startsAt: string;
+  endsAt: string;
+  triggers: CrossSellTrigger[];
+  suggestedProductIds: string[];
+  promotionalText: string;
+  discountType: CrossSellDiscountType;
+  discountValue: number;
+  discountScope: CrossSellDiscountScope;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface CatalogProduct {
+  id: string;
+  sku: string;
+  name: string;
+  style: string;
+  categoryIds: string[];
+  collectionIds: string[];
+  price: number;
+  promotionalPrice?: number;
+  sellerType: '1P' | '3P';
+  sellerName: string;
+  minimumCommissionPrice?: number;
+  tone: 'amber' | 'gold' | 'dark' | 'red';
+}

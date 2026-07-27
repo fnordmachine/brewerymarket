@@ -9,6 +9,7 @@ import { emptyFilters, sampleOrders } from './data';
 import { exportOrdersToExcel } from './exportOrders';
 import type { Order, OrderFilters } from './types';
 import CarouselManager from './CarouselManager';
+import CrossSellManager from './CrossSellManager';
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 const dateTime = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -172,7 +173,7 @@ function OrdersReport() {
           <small>OPERAÇÃO</small>
           <a><LayoutGrid size={18} /> Visão geral</a><a><Package size={18} /> Produtos <span>248</span></a><a className="active" href="#/pedidos"><ShoppingBag size={18} /> Pedidos</a>
           <small>LOJA ONLINE</small>
-          <a href="#/personalizacao/carrossel"><Palette size={18} /> Personalização</a><a><Store size={18} /> Páginas</a><a><Zap size={18} /> Integrações</a>
+          <a href="#/cross-sell"><Zap size={18} /> Cross-sell</a><a href="#/personalizacao/carrossel"><Palette size={18} /> Personalização</a><a><Store size={18} /> Páginas</a><a><Zap size={18} /> Integrações</a>
           <small>GESTÃO</small>
           <a><BarChart3 size={18} /> Relatórios</a><a><Users size={18} /> Clientes</a><a><Settings size={18} /> Configurações</a><a><BookOpen size={18} /> Conteúdos</a>
         </nav>
@@ -245,5 +246,7 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleRoute);
   }, []);
 
-  return route.startsWith('#/personalizacao') ? <CarouselManager /> : <OrdersReport />;
+  if (route.startsWith('#/personalizacao')) return <CarouselManager />;
+  if (route.startsWith('#/cross-sell')) return <CrossSellManager />;
+  return <OrdersReport />;
 }

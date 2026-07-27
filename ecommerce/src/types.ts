@@ -19,3 +19,47 @@ export interface NavigationCarousel {
     destination: { type: string; value: string; label: string; openInNewTab: boolean }; active: boolean; order: number;
   }>;
 }
+
+export interface CatalogProduct {
+  id: string;
+  sku: string;
+  name: string;
+  style: string;
+  categoryIds: string[];
+  collectionIds: string[];
+  price: number;
+  promotionalPrice?: number;
+  sellerType: '1P' | '3P';
+  sellerName: string;
+  minimumCommissionPrice?: number;
+  tone: 'amber' | 'gold' | 'dark' | 'red';
+}
+
+export interface ProductPricePreview {
+  listPrice: number;
+  basePrice: number;
+  requestedCrossSellDiscount: number;
+  crossSellDiscount: number;
+  paymentDiscount: number;
+  finalPrice: number;
+  cappedByCommission: boolean;
+  minimumAllowedPrice?: number;
+}
+
+export interface CrossSellCombo {
+  ruleId: string;
+  code: string;
+  promotionalText: string;
+  discountScope: 'suggested' | 'combination';
+  suggestedProducts: Array<CatalogProduct & {
+    lineIndex: number;
+    pricing: ProductPricePreview;
+    cartMetadata: {
+      crosssell_rule_id: string;
+      crosssell: true;
+      crosssell_line_index: number;
+      crosssell_discount: number;
+    };
+  }>;
+  combination: Array<{ productId: string; price: ProductPricePreview }>;
+}

@@ -1,0 +1,31 @@
+{
+  "rules": [
+    {
+      "code": "IPA-PETISCOS",
+      "internalName": "IPA com rótulos complementares",
+      "active": true,
+      "startsAt": "2026-01-01T00:00:00.000Z",
+      "endsAt": "2028-12-31T23:59:59.999Z",
+      "triggers": [{ "type": "category", "referenceId": "ipa", "label": "IPA" }],
+      "suggestedProductIds": ["serra-pilsen", "aurora-sour"],
+      "promotionalText": "Complete sua descoberta e ganhe um preço especial",
+      "discountType": "percentage",
+      "discountValue": 12,
+      "discountScope": "suggested"
+    },
+    {
+      "code": "TOP-PRODUCTS-COMBO",
+      "internalName": "Combo Top Products",
+      "active": true,
+      "startsAt": "2026-01-01T00:00:00.000Z",
+      "endsAt": "2028-12-31T23:59:59.999Z",
+      "triggers": [{ "type": "collection", "referenceId": "top-products", "label": "Top Products" }],
+      "suggestedProductIds": ["noite-stout"],
+      "promotionalText": "Seleção do mestre: leve o combo completo",
+      "discountType": "fixed",
+      "discountValue": 4,
+      "discountScope": "combination"
+    }
+  ]
+}
+

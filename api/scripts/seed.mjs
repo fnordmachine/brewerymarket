@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 const apiUrl = process.env.API_URL ?? 'http://127.0.0.1:3333';
 const seed = JSON.parse(await readFile(new URL('../seed/navigation-carousel.json', import.meta.url), 'utf8'));
 const orders = JSON.parse(await readFile(new URL('../seed/orders.json', import.meta.url), 'utf8'));
+const crossSellRules = JSON.parse(await readFile(new URL('../seed/cross-sell-rules.json', import.meta.url), 'utf8'));
 
 const listResponse = await fetch(`${apiUrl}/navigation-carousels`);
 if (!listResponse.ok) throw new Error(`API indisponível: HTTP ${listResponse.status}`);
@@ -36,3 +37,12 @@ if (ordersResponse.status === 404) {
 if (!ordersResponse.ok) throw new Error(`Falha ao importar pedidos: HTTP ${ordersResponse.status} — ${await ordersResponse.text()}`);
 const savedOrders = await ordersResponse.json();
 console.log(`Pedidos disponíveis: ${savedOrders.length}`);
+
+const crossSellResponse = await fetch(`${apiUrl}/cross-sell-rules/import`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(crossSellRules),
+});
+if (!crossSellResponse.ok) throw new Error(`Falha ao importar cross-sell: HTTP ${crossSellResponse.status} — ${await crossSellResponse.text()}`);
+const savedRules = await crossSellResponse.json();
+console.log(`Regras de cross-sell processadas: ${savedRules.received}`);
